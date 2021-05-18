@@ -8,5 +8,7 @@ public interface ICustomerLoanRequestService {
 	public String updateCustomerLoanRequest(int id, CustomerLoanRequest customerLoanRequest);
 
 	public String deleteCustomerLoanRequest(int id);
+	
+	public CustomerLoanRequest findById(int id);
 
 }
