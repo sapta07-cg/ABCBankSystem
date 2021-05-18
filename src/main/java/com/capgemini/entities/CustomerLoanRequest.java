@@ -12,7 +12,7 @@ import lombok.Data;
 public class CustomerLoanRequest {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int customerid;
+	private int id;
 	private double age;
 	private double annualincome;
 	private String loantype;

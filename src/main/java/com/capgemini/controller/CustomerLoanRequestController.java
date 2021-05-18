@@ -14,14 +14,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.capgemini.entities.CustomerLoanRequest;
 import com.capgemini.exception.CustomerLoanRequestNotFoundException;
+import com.capgemini.repository.CustomerLoanRequestRepository;
 import com.capgemini.service.CustomerLoanRequestImpl;
 
 @RestController
-@RequestMapping("api/customerloanrequest/")
+@RequestMapping("/api/customerloanrequest/")
 public class CustomerLoanRequestController {
 	
 	@Autowired
 	CustomerLoanRequestImpl customerLoanRequestImpl;
+	
+	@Autowired
+	CustomerLoanRequestRepository customerLoanRequestRepository;
 	
 	@PostMapping("/addloandetails")
 	public ResponseEntity<String> createloandetails(@RequestBody CustomerLoanRequest customerLoanRequest) {

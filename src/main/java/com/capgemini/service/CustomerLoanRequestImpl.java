@@ -1,11 +1,12 @@
 package com.capgemini.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.capgemini.entities.CustomerLoanRequest;
 import com.capgemini.exception.CustomerLoanRequestNotFoundException;
 import com.capgemini.repository.CustomerLoanRequestRepository;
-
+@Service
 public class CustomerLoanRequestImpl implements ICustomerLoanRequestService{
 	
 	@Autowired
@@ -26,7 +27,7 @@ public class CustomerLoanRequestImpl implements ICustomerLoanRequestService{
 		}
 
 		CustomerLoanRequest ld = customerLoanRequestRepository.findById(id).get();
-		ld.setCustomerid(customerLoanRequest.getCustomerid());
+		ld.setId(customerLoanRequest.getId());
 		customerLoanRequestRepository.save(ld);
 
 		return "Customer Details Added!";
