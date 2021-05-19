@@ -24,15 +24,18 @@ public class ICustomerLoanReportImpl implements ICustomerLoanReport {
 	LoanStatusRepository loanstatusRepository;
 
 	@Override
-	public String hello(int id, int loanid,int statusid) {
+	public String hello(int id) {
 
 		if (!customerLoanRequestRepository.existsById(id)) {
 			throw new CustomerLoanRequestNotFoundException("Check the id and Try again");
 		}
 
 		CustomerLoanRequest ld = customerLoanRequestRepository.findById(id).get();
-		LoanProgram lp = loanprogramRepository.findById(loanid).get();
-		LoanStatus ls = loanstatusRepository.findById(statusid).get();
+		//LoanProgram lp = loanprogramRepository.findById(loanid).get();
+		//LoanStatus ls = loanstatusRepository.findById(statusid).get();
+		LoanStatus ls=new LoanStatus();
+		
+		
 		
 		double loanamount = 0.0;
 		double emi = 0.0;
@@ -42,7 +45,7 @@ public class ICustomerLoanReportImpl implements ICustomerLoanReport {
 		
 		
 
-		if (ld.getLoantype().equals(lp.getLoantype())) {
+		if (ld.getLoantype().equals("home") ){
 			if ((ld.getAge() > 20 || ld.getAge() <= 60) && (ld.getAnnualincome() < 300000)) {
 				return "You are not eligible for loan";
 			}
@@ -115,8 +118,8 @@ public class ICustomerLoanReportImpl implements ICustomerLoanReport {
 
 		// this condition is for personal loan
 
-		else if (ld.getLoantype().equals(lp.getLoantype())) {
-			if ((ld.getAge() > lp.getMinimumage() || ld.getAge() <= lp.getMaximaumage()) && (ld.getAnnualincome() < 300000)) {
+		else if (ld.getLoantype().equals("personal") ){
+			if ((ld.getAge() > 20 || ld.getAge() <= 60) && (ld.getAnnualincome() < 300000)) {
 				return "You are not eligible for loan";
 			}
 
@@ -186,7 +189,7 @@ public class ICustomerLoanReportImpl implements ICustomerLoanReport {
 		
 		
 		//start buisness loan logic
-		else if(ld.getLoantype().equals(lp.getLoantype())){
+		else if(ld.getLoantype().equals("buisness")){
 			if((ld.getAge() > 20 || ld.getAge() <= 60) && (ld.getAnnualincome() < 300000)) {
 				return "You are not eligible for loan";				
 			}
@@ -224,7 +227,7 @@ public class ICustomerLoanReportImpl implements ICustomerLoanReport {
 		
 		
 		 //this condition is for car loan
-		else if(ld.getLoantype().equals(lp.getLoantype())) {
+		else if(ld.getLoantype().equals("car")) {
 			if((ld.getAge() > 20 || ld.getAge() <= 60) && (ld.getAnnualincome() < 300000)) {
 				return "You are not eligible for loan";				
 			}

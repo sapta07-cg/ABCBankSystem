@@ -20,7 +20,7 @@ public class LADController {
 	
 	@GetMapping("/{id}")
 	public String checklad(@PathVariable int id) {
-		String s1=icustomerloanreportimpl.hello(id,id,id);
+		String s1=icustomerloanreportimpl.hello(id);
 		return s1;
 	}
 	
