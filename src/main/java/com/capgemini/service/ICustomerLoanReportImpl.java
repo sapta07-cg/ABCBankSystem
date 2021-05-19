@@ -1,5 +1,7 @@
 package com.capgemini.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -270,4 +272,18 @@ public class ICustomerLoanReportImpl implements ICustomerLoanReport {
 		
 		
 	}
+	
+	
+	
+	
+	
+	public List<LoanStatus> findallrecord(){
+		return loanstatusRepository.findAll();
+		
+	}
+	
+	
+	
+	
+	
 }
