@@ -31,14 +31,14 @@ public class AdminController {
 	}
 	
 	@PutMapping("/{loanid}")
-	public ResponseEntity<String> updateloandetails(@PathVariable int id,@RequestBody LoanProgram loanprogram)  {
-		iloanservice.updateLoanDetails(id, loanprogram);
+	public ResponseEntity<String> updateloandetails(@PathVariable int loanid,@RequestBody LoanProgram loanprogram)  {
+		iloanservice.updateLoanDetails(loanid, loanprogram);
 		return new ResponseEntity<>("Updated", HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/{loanid}")
-	public ResponseEntity<String> deleteloandetails(@PathVariable int id) {
-		iloanservice.deleteLoanDetails(id);
+	public ResponseEntity<String> deleteloandetails(@PathVariable int loanid) {
+		iloanservice.deleteLoanDetails(loanid);
 		return new ResponseEntity<>("Deleted", HttpStatus.OK);
 	}
 	
