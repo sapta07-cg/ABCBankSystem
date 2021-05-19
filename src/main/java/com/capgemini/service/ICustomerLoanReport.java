@@ -7,5 +7,6 @@ import com.capgemini.entities.LoanStatus;
 public interface ICustomerLoanReport {
 	public String hello(int id);
 	public List<LoanStatus> findallrecord();
+	public String deleteById(int id);
 
 }

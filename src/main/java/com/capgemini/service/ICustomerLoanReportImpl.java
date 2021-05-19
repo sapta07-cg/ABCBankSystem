@@ -284,6 +284,15 @@ public class ICustomerLoanReportImpl implements ICustomerLoanReport {
 		return loanstatusRepository.findAll();
 		
 	}
+
+
+
+
+	@Override
+	public String deleteById(int id) {
+		loanstatusRepository.deleteById(id);
+		return "LoanStatus is Deleted Sucessfully";
+	}
 	
 	
 	
