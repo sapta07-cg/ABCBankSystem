@@ -15,8 +15,8 @@ public class CustomerLoanRequest {
 	private int id;
 	private double age;
 	private double annualincome;
+	private String name;
 	private String loantype;
-	private String loanstatus;
 	private String email;
 	private String mobile;
 	private String gender;

@@ -19,9 +19,9 @@ public class LADController {
 	ICustomerLoanReportImpl icustomerloanreportimpl;
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<String> checklad(@PathVariable int id) {
-		icustomerloanreportimpl.hello(id);
-		return new ResponseEntity<>("you got loan", HttpStatus.OK);
+	public String checklad(@PathVariable int id) {
+		String s1=icustomerloanreportimpl.hello(id,id,id);
+		return s1;
 	}
 	
 
