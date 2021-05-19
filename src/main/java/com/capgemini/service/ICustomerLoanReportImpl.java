@@ -42,19 +42,26 @@ public class ICustomerLoanReportImpl implements ICustomerLoanReport {
 		double loanamount = 0.0;
 		double emi = 0.0;
 		double tenure = 0;
+		
+		
+		if ((ld.getAge() > 20 || ld.getAge() <= 60) && (ld.getAnnualincome() < 300000)) {
+			return "You are not eligible for loan";
+		}
+		else {
+		
 
 		/*-------------------------------- this whole condition is for HOME LOAN---------------------------------------------*/
 		
 		
-
+         
 		if (ld.getLoantype().equals("home") ){
-			if ((ld.getAge() > 20 || ld.getAge() <= 60) && (ld.getAnnualincome() < 300000)) {
-				return "You are not eligible for loan";
-			}
+			//if ((ld.getAge() > 20 || ld.getAge() <= 60) && (ld.getAnnualincome() < 300000)) {
+				//return "You are not eligible for loan";
+			//}
 
 			// age group for 20-30
 
-			else if (ld.getAge() >= 20 && ld.getAge() <= 30) {
+			 if (ld.getAge() >= 20 && ld.getAge() <= 30) {
 				double intrate = 6.0 / 12 / 100;
 				if (ld.getAnnualincome() > 300000 && ld.getAnnualincome() <= 500000) {
 					loanamount = 1500000;
@@ -118,16 +125,16 @@ public class ICustomerLoanReportImpl implements ICustomerLoanReport {
 		
 		
 
-		// this condition is for personal loan
+		/*------------------------------this condition is for PERSONAL LOAN-------------------------------------------------*/
 
 		else if (ld.getLoantype().equals("personal") ){
-			if ((ld.getAge() > 20 || ld.getAge() <= 60) && (ld.getAnnualincome() < 300000)) {
-				return "You are not eligible for loan";
-			}
+			//if ((ld.getAge() > 20 || ld.getAge() <= 60) && (ld.getAnnualincome() < 300000)) {
+				//return "You are not eligible for loan";
+			//}
 
 			// age group for 20-30
 
-			else if (ld.getAge() >= 20 && ld.getAge() <= 30) {
+			 if (ld.getAge() >= 20 && ld.getAge() <= 30) {
 				double intrate = 9.0 / 12 / 100;
 				if (ld.getAnnualincome() > 300000 && ld.getAnnualincome() <= 500000) {
 					loanamount = 1500000;
@@ -187,15 +194,13 @@ public class ICustomerLoanReportImpl implements ICustomerLoanReport {
 			}
 
 		}
-		// end of personal loan
+		/*-------------------------------------------- end of PERSONAL LOAN------------------------------------------------*/
 		
 		
-		//start buisness loan logic
-		else if(ld.getLoantype().equals("buisness")){
-			if((ld.getAge() > 20 || ld.getAge() <= 60) && (ld.getAnnualincome() < 300000)) {
-				return "You are not eligible for loan";				
-			}
-			else {
+		/*-------------------------------------------start BUSINESS LOGIC---------------------------------------------*/
+		else if(ld.getLoantype().equals("business")){
+			//if((ld.getAge() > 20 || ld.getAge() <= 60) && (ld.getAnnualincome() < 300000)) {
+				//return "You are not eligible for loan";				
 				if (ld.getAnnualincome() > 300000 && ld.getAnnualincome() <= 500000) {
 					double intrate = 5.0 / 12 / 100;
 					loanamount = 700000;
@@ -223,17 +228,15 @@ public class ICustomerLoanReportImpl implements ICustomerLoanReport {
 				}
 			}
 			
-		}
 		
-		//end buisness loan logic
+		/*---------------------------------------------end BUISNESS LOAN logic---------------------------------------*/
 		
 		
-		 //this condition is for car loan
+		 /*---------------------------------------this condition is for CAR LOAN--------------------------------------*/
 		else if(ld.getLoantype().equals("car")) {
-			if((ld.getAge() > 20 || ld.getAge() <= 60) && (ld.getAnnualincome() < 300000)) {
-				return "You are not eligible for loan";				
-			}
-			else {
+			//if((ld.getAge() > 20 || ld.getAge() <= 60) && (ld.getAnnualincome() < 300000)) {
+				//return "You are not eligible for loan";				
+			//}
 				if (ld.getAnnualincome() > 300000 && ld.getAnnualincome() <= 800000) {
 					double intrate = 9.0 / 12 / 100;
 					loanamount = 700000;
@@ -260,7 +263,6 @@ public class ICustomerLoanReportImpl implements ICustomerLoanReport {
 					emi = (loanamount * intrate * Math.pow(1 + intrate, tenure)) / (Math.pow(1 + intrate, tenure - 1));
 				}
 			}
-		}
 		ls.setCustomerloantype(ld.getLoantype());
 		ls.setCustomerrefid(ld.getId());
 		ls.setEmi(emi);
@@ -269,6 +271,7 @@ public class ICustomerLoanReportImpl implements ICustomerLoanReport {
 
 		return "your loan amount is" + " " + Double.toString(loanamount) + "              " + "your tenure is" + " "
 				+ Double.toString(tenure) + "years" + "     " + " your emi is " + "   " + Double.toString(emi);
+		}
 		
 		
 	}
@@ -276,7 +279,7 @@ public class ICustomerLoanReportImpl implements ICustomerLoanReport {
 	
 	
 	
-	
+	//FIND ALL RECORD FROM LOAN STATUS TABLE
 	public List<LoanStatus> findallrecord(){
 		return loanstatusRepository.findAll();
 		

@@ -33,19 +33,18 @@ public class CustomerLoanRequestController {
 		return new ResponseEntity<>("Added", HttpStatus.OK);
 	}
 	
-	@PutMapping("/{customerid}")
-	public ResponseEntity<String> updateloandetails(@PathVariable int id,
-			@RequestBody CustomerLoanRequest customerLoanRequest) throws CustomerLoanRequestNotFoundException {
+	@PutMapping("/update/{id}")
+	public ResponseEntity<String> updateloandetails(@PathVariable int id,@RequestBody CustomerLoanRequest customerLoanRequest) throws CustomerLoanRequestNotFoundException {
 		customerLoanRequestImpl.updateCustomerLoanRequest(id, customerLoanRequest);
 		return new ResponseEntity<>("Updated", HttpStatus.OK);
 	}
 	
-	@DeleteMapping("/{customerid}")
+	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<String> deleteLoandetails(@PathVariable int id) {
 		customerLoanRequestImpl.deleteCustomerLoanRequest(id);
 		return new ResponseEntity<>("Deleted", HttpStatus.OK);
 	}
-	@GetMapping("/{customerid}")
+	@GetMapping("/all/{id}")
 	public ResponseEntity<CustomerLoanRequest> findById(@PathVariable int id) {
 		CustomerLoanRequest clr = customerLoanRequestImpl.findById(id);
 		return new ResponseEntity<CustomerLoanRequest>(clr, HttpStatus.OK);
