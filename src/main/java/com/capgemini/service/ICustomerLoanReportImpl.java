@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.capgemini.entities.CustomerLoanRequest;
-import com.capgemini.entities.LoanProgram;
 import com.capgemini.entities.LoanStatus;
 import com.capgemini.exception.CustomerLoanRequestNotFoundException;
 import com.capgemini.repository.CustomerLoanRequestRepository;

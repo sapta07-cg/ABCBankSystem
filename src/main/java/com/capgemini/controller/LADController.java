@@ -11,35 +11,36 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.capgemini.entities.CustomerLoanRequest;
 import com.capgemini.entities.LoanStatus;
-import com.capgemini.repository.LoanStatusRepository;
-import com.capgemini.service.CustomerLoanRequestImpl;
-import com.capgemini.service.ICustomerLoanReportImpl;
+import com.capgemini.service.ICustomerLoanReport;
 
 @RestController
 @RequestMapping("api/lad/")
 public class LADController {
+	//@Autowired
+	//ICustomerLoanReportImpl icustomerloanreportimpl;
+	
 	@Autowired
-	ICustomerLoanReportImpl icustomerloanreportimpl;
+	ICustomerLoanReport icustomerloanreport;
 	
 	
 	
 	@GetMapping("/{id}")
 	public String checklad(@PathVariable int id) {
-		String s1=icustomerloanreportimpl.hello(id);
+		String s1=icustomerloanreport.hello(id);
 		return s1;
 	}
 	
 	@GetMapping("/allrecords")
 	public List<LoanStatus> allrecords(){
-		return icustomerloanreportimpl.findallrecord();
+		return icustomerloanreport.findallrecord();
 	}
 	
 	@DeleteMapping("{id}")
-	public String deletelad(@PathVariable int id) {
-		String s1 = icustomerloanreportimpl.deleteById(id);
-		return s1;
+	public ResponseEntity<String> deletelad(@PathVariable int id) {
+		String s1 = icustomerloanreport.deleteById(id);
+		//return s1;
+		return new ResponseEntity<>(s1, HttpStatus.OK);
 		
 		}
 

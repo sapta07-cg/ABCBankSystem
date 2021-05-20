@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.capgemini.entities.LoanProgram;
+import com.capgemini.exception.Loannotfoundexception;
 import com.capgemini.repository.LoanProgramRepository;
 
 @Service
@@ -34,6 +35,15 @@ public class ILoanServiceimpl implements ILoanService{
 	public String deleteLoanDetails(int loanid) {
 		loanprogramrepository.deleteById(loanid);
 		return "Record deleted";
+	}
+
+	@Override
+	public LoanProgram findById(int id){
+		if (!loanprogramrepository.existsById(id)) {
+			throw new Loannotfoundexception(" Loan program Not Found");
+		}
+		LoanProgram ls = loanprogramrepository.findById(id).get();
+		return ls;
 	}
 
 }

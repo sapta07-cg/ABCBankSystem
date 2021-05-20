@@ -6,5 +6,6 @@ public interface ILoanService {
 	public String addLoanDetails(LoanProgram loanprogram);
 	public String updateLoanDetails(int loanid,LoanProgram loanprogram);
 	public String deleteLoanDetails(int loanid);
+	public LoanProgram findById(int id);
 
 }

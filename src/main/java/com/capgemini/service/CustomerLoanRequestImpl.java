@@ -31,6 +31,7 @@ public class CustomerLoanRequestImpl implements ICustomerLoanRequestService{
 		if(customerLoanRequest.getCity()!=null) {
 		ld.setCity(customerLoanRequest.getCity());
 		}
+		
 		customerLoanRequestRepository.save(ld);
 
 		return "Customer Details updated!";
