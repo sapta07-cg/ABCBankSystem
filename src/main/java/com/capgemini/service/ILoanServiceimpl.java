@@ -1,5 +1,7 @@
 package com.capgemini.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,11 +13,11 @@ import com.capgemini.repository.LoanProgramRepository;
 public class ILoanServiceimpl implements ILoanService{
 	
 	@Autowired
-	LoanProgramRepository loanprogramrepository;
+	LoanProgramRepository loanProgramRepository;
 
 	@Override
-	public String addLoanDetails(LoanProgram loanprogram) {
-		loanprogramrepository.save(loanprogram);
+	public String addLoanDetails(LoanProgram loanProgram) {
+		loanProgramRepository.save(loanProgram);
 		return "loan details added!!";
 	}
 
@@ -24,26 +26,33 @@ public class ILoanServiceimpl implements ILoanService{
 		//if(!loanprogramrepository.existsById(loanid)) {
 			//throw new LoannotfoundException("Check the id and Try again");
 		//}
-		LoanProgram ld=loanprogramrepository.findById(loanid).get();
-		ld.setLoantype(loanprogram.getLoantype());
-		loanprogramrepository.save(ld);
+		LoanProgram ld=loanProgramRepository.findById(loanid).get();
+		ld.setLoanType(loanprogram.getLoanType());
+		ld.setMaximumAge(loanprogram.getMaximumAge());
+		ld.setMinimumAge(loanprogram.getMinimumAge());
+		loanProgramRepository.save(ld);
 		
 		return "Loan_details updated";
 	}
 
 	@Override
-	public String deleteLoanDetails(int loanid) {
-		loanprogramrepository.deleteById(loanid);
+	public String deleteLoanDetails(int loanId) {
+		loanProgramRepository.deleteById(loanId);
 		return "Record deleted";
 	}
 
 	@Override
 	public LoanProgram findById(int id){
-		if (!loanprogramrepository.existsById(id)) {
+		if (!loanProgramRepository.existsById(id)) {
 			throw new Loannotfoundexception(" Loan program Not Found");
 		}
-		LoanProgram ls = loanprogramrepository.findById(id).get();
+		LoanProgram ls = loanProgramRepository.findById(id).get();
 		return ls;
+	}
+
+	@Override
+	public List<LoanProgram> findAll() {
+		return loanProgramRepository.findAll();
 	}
 
 }

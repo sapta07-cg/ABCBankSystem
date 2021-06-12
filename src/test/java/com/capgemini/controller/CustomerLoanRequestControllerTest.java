@@ -48,7 +48,7 @@ class CustomerLoanRequestControllerTest {
 	@Test
 	void createCustomerTest() throws Exception {
 		CustomerLoanRequest clr = new CustomerLoanRequest();
-		clr.setName("cdef");
+		clr.setFirstName("cdef");
 		clr.setCity("kolkata");
 
 		Mockito.when(icustomerloanrequestservice.addCustomerLoanRequest(Mockito.any())).thenReturn("Added");
@@ -64,7 +64,7 @@ class CustomerLoanRequestControllerTest {
 		String URI = "/api/customerloanrequest/delete/3";
 		CustomerLoanRequest clr = new CustomerLoanRequest();
 		clr.setId(3);
-		clr.setName("amrutha");
+		clr.setFirstName("amrutha");
 		clr.setEmail("ammu@gmail.com");
 		clr.setCity("kolkata");
 		new ArrayList<>();

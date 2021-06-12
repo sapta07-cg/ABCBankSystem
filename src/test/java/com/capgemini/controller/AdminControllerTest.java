@@ -31,8 +31,8 @@ class AdminControllerTest {
 	@Test
 	void addloandetails() throws Exception {
 		LoanProgram lp = new LoanProgram();
-		lp.setLoanid(1);
-		lp.setLoantype("car");
+		lp.setLoanId(1);
+		lp.setLoanType("car");
 
 		Mockito.when(iloanservice.addLoanDetails(Mockito.any())).thenReturn("Added");
 
@@ -46,11 +46,11 @@ class AdminControllerTest {
 	void DeleteEmployeeByIdTest() throws Exception{
 		String URI = "/api/admin/2";
 		LoanProgram lp = new LoanProgram();
-		lp.setLoanid(2);
-		lp.setLoantype("car");
+		lp.setLoanId(2);
+		lp.setLoanType("car");
 		new ArrayList<>();
 
-		iloanservice.deleteLoanDetails(lp.getLoanid());
+		iloanservice.deleteLoanDetails(lp.getLoanId());
 		MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get(URI).accept(org.springframework.http.MediaType.APPLICATION_JSON))
 				.andReturn();
 		MockHttpServletResponse mockHttpServletResponse = mvcResult.getResponse();

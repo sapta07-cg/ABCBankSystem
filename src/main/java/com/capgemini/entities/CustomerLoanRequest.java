@@ -14,15 +14,16 @@ public class CustomerLoanRequest {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private double age;
-	private double annualincome;
-	private String name;
-	private String loantype;
+	private double annualIncome;
+	private String firstName;
+	private String lastName;
+	private String loanType;
 	private String email;
 	private String mobile;
 	private String gender;
 	private String city;
-	private String state;
-	private String pannumber;
+	private String stateName;
+	private String panNumber;
 	private String nationality;
 	
 

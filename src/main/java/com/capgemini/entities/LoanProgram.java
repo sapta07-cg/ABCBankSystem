@@ -11,8 +11,8 @@ import lombok.Data;
 public class LoanProgram {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int loanid;
-	private String loantype;
-	private double maximaumage;
-	private double minimumage;
+	private int loanId;
+	private String loanType;
+	private double maximumAge;
+	private double minimumAge;
 }

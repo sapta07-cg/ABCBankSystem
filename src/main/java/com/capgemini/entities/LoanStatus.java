@@ -1,5 +1,6 @@
 package com.capgemini.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,10 +13,11 @@ import lombok.Data;
 public class LoanStatus {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int statusid;
-	private double customerrefid;
-	private String customerloantype;
-	private double loanamount;
+	private int statusId;
+	@Column(nullable = false, unique = true)
+	private double customerRefId;
+	private String customerLoanType;
+	private double loanAmount;
 	private double emi;
 
 }

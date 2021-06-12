@@ -38,11 +38,11 @@ class LADControllerTest {
 	void deleteladtest() throws Exception{
 		String URI = "/api/lad/3";
 		LoanStatus ls = new LoanStatus();
-		ls.setStatusid(3);
-		ls.setCustomerloantype("home");
+		ls.setStatusId(3);
+		ls.setCustomerLoanType("home");
 		new ArrayList<>();
 
-		icustomerloanreport.deleteById(ls.getStatusid());
+		icustomerloanreport.deleteById(ls.getStatusId());
 		MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get(URI).accept(org.springframework.http.MediaType.APPLICATION_JSON))
 				.andReturn();
 		MockHttpServletResponse mockHttpServletResponse = mvcResult.getResponse();
